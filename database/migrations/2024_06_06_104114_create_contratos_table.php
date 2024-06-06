@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('contratos', function (Blueprint $table) {
             $table->id();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->text('maintenance_plan');
+            $table->unsignedBigInteger('cliente_id');
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->unsignedBigInteger('filtro_id');
+            $table->foreign('filtro_id')->references('id')->on('filtros');
             $table->timestamps();
         });
     }

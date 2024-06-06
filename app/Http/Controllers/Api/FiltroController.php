@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Filtro;
 use App\Traits\JsonResponseTrait;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class FiltroController extends Controller
 
     public function index()
     {
-        $filtros = Filtro::all();
+        $filtros = Filtro::with('contratos')->get();
 
         return $this->jsonResponse($filtros, 200, []);
     }

@@ -4,8 +4,9 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\PermissionsController;
 use App\Http\Controllers\Api\Auth\RolesController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\FiltroController;
+use App\Http\Controllers\Api\ClienteController;
+use App\Http\Controllers\Api\ContratoController;
+use App\Http\Controllers\Api\FiltroController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -63,6 +64,15 @@ Route::prefix('v1')->group(function () {
             Route::post('/', [FiltroController::class, 'store']);
             Route::put('/{id}', [FiltroController::class, 'update']);
             Route::delete('/{id}', [FiltroController::class, 'destroy']);
+        });
+
+        //Contratos
+        Route::prefix('contratos')->group(function () {
+
+            Route::get('/', [ContratoController::class, 'index']);
+            Route::post('/', [ContratoController::class, 'store']);
+            Route::put('/{id}', [ContratoController::class, 'update']);
+            Route::delete('/{id}', [ContratoController::class, 'destroy']);
         });
     });
 });

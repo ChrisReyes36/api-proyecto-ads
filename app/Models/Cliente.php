@@ -17,4 +17,9 @@ class Cliente extends Model
         'phone',
         'email'
     ];
+
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class, 'cliente_id');
+    }
 }

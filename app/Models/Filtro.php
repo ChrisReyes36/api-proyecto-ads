@@ -17,4 +17,9 @@ class Filtro extends Model
         'description',
         'acquisition_date'
     ];
+
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class, 'filtro_id');
+    }
 }

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Cliente;
 use App\Traits\JsonResponseTrait;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::with('contratos')->get();
 
         return $this->jsonResponse($clientes, 200, []);
     }
