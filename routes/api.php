@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\PermissionsController;
 use App\Http\Controllers\Api\Auth\RolesController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FiltroController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -43,6 +45,24 @@ Route::prefix('v1')->group(function () {
             Route::post('/', [UserController::class, 'store']);
             Route::put('/{id}', [UserController::class, 'update']);
             Route::delete('/{id}', [UserController::class, 'destroy']);
+        });
+
+        //Clientes
+        Route::prefix('clientes')->group(function () {
+
+            Route::get('/', [ClienteController::class, 'index']);
+            Route::post('/', [ClienteController::class, 'store']);
+            Route::put('/{id}', [ClienteController::class, 'update']);
+            Route::delete('/{id}', [ClienteController::class, 'destroy']);
+        });
+
+        //Filtros
+        Route::prefix('filtros')->group(function () {
+
+            Route::get('/', [FiltroController::class, 'index']);
+            Route::post('/', [FiltroController::class, 'store']);
+            Route::put('/{id}', [FiltroController::class, 'update']);
+            Route::delete('/{id}', [FiltroController::class, 'destroy']);
         });
     });
 });
