@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 use App\Traits\JsonResponseTrait;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Passport\Token;
 
 class AuthController extends Controller
 {

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\PermissionsController;
 use App\Http\Controllers\Api\Auth\RolesController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -17,6 +18,15 @@ Route::prefix('v1')->group(function () {
         Route::get('user', [AuthController::class, 'user']);
         Route::post('logout', [AuthController::class, 'logout']);
 
+        //Permisos
+        Route::prefix('permisos')->group(function () {
+
+            Route::get('/', [PermissionsController::class, 'index']);
+            Route::post('/', [PermissionsController::class, 'store']);
+            Route::put('/{id}', [PermissionsController::class, 'update']);
+            Route::delete('/{id}', [PermissionsController::class, 'destroy']);
+        });
+
         //Roles
         Route::prefix('roles')->group(function () {
 
@@ -26,13 +36,13 @@ Route::prefix('v1')->group(function () {
             Route::delete('/{id}', [RolesController::class, 'destroy']);
         });
 
-        //Permisos
-        Route::prefix('permisos')->group(function () {
+        //Usuarios
+        Route::prefix('usuarios')->group(function () {
 
-            Route::get('/', [PermissionsController::class, 'index']);
-            Route::post('/', [PermissionsController::class, 'store']);
-            Route::put('/{id}', [PermissionsController::class, 'update']);
-            Route::delete('/{id}', [PermissionsController::class, 'destroy']);
+            Route::get('/', [UserController::class, 'index']);
+            Route::post('/', [UserController::class, 'store']);
+            Route::put('/{id}', [UserController::class, 'update']);
+            Route::delete('/{id}', [UserController::class, 'destroy']);
         });
     });
 });
