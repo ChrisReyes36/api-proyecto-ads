@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('alert_date');
             $table->string('alert_time');
             $table->text('description');
-            $table->enum('status', ['pendiente', 'completada'])->default('pendiente');
+            $table->enum('status', ['leída', 'no leída'])->default('no leída');
             $table->unsignedBigInteger('contrato_id');
             $table->foreign('contrato_id')->references('id')->on('contratos');
             $table->timestamps();
