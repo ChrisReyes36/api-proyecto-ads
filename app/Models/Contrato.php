@@ -33,4 +33,9 @@ class Contrato extends Model
     {
         return $this->hasMany(Alerta::class, 'contrato_id');
     }
+
+    public function mantenimientos()
+    {
+        return $this->hasMany(Mantenimiento::class, 'contrato_id');
+    }
 }

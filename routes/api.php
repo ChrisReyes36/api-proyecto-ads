@@ -8,6 +8,9 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\ContratoController;
 use App\Http\Controllers\Api\FiltroController;
+use App\Http\Controllers\Api\InventarioPiezaController;
+use App\Http\Controllers\Api\MantenimientoController;
+use App\Http\Controllers\Api\OrdenTrabajoController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -83,6 +86,33 @@ Route::prefix('v1')->group(function () {
             Route::post('/', [AlertaController::class, 'store']);
             Route::put('/{id}', [AlertaController::class, 'update']);
             Route::delete('/{id}', [AlertaController::class, 'destroy']);
+        });
+
+        //Mantenimientos
+        Route::prefix('mantenimientos')->group(function () {
+
+            Route::get('/', [MantenimientoController::class, 'index']);
+            Route::post('/', [MantenimientoController::class, 'store']);
+            Route::put('/{id}', [MantenimientoController::class, 'update']);
+            Route::delete('/{id}', [MantenimientoController::class, 'destroy']);
+        });
+
+        //Inventario de piezas
+        Route::prefix('inventario-piezas')->group(function () {
+
+            Route::get('/', [InventarioPiezaController::class, 'index']);
+            Route::post('/', [InventarioPiezaController::class, 'store']);
+            Route::put('/{id}', [InventarioPiezaController::class, 'update']);
+            Route::delete('/{id}', [InventarioPiezaController::class, 'destroy']);
+        });
+
+        //Ordenes de trabajo
+        Route::prefix('ordenes-trabajo')->group(function () {
+
+            Route::get('/', [OrdenTrabajoController::class, 'index']);
+            Route::post('/', [OrdenTrabajoController::class, 'store']);
+            Route::put('/{id}', [OrdenTrabajoController::class, 'update']);
+            Route::delete('/{id}', [OrdenTrabajoController::class, 'destroy']);
         });
     });
 });
