@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AlertaController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\PermissionsController;
 use App\Http\Controllers\Api\Auth\RolesController;
@@ -73,6 +74,15 @@ Route::prefix('v1')->group(function () {
             Route::post('/', [ContratoController::class, 'store']);
             Route::put('/{id}', [ContratoController::class, 'update']);
             Route::delete('/{id}', [ContratoController::class, 'destroy']);
+        });
+
+        //Alertas
+        Route::prefix('alertas')->group(function () {
+
+            Route::get('/', [AlertaController::class, 'index']);
+            Route::post('/', [AlertaController::class, 'store']);
+            Route::put('/{id}', [AlertaController::class, 'update']);
+            Route::delete('/{id}', [AlertaController::class, 'destroy']);
         });
     });
 });

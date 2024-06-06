@@ -14,7 +14,7 @@ class ContratoController extends Controller
 
     public function index()
     {
-        $contratos = Contrato::with('cliente', 'filtro')->get();
+        $contratos = Contrato::with('cliente', 'filtro', 'alertas')->get();
 
         return $this->jsonResponse($contratos, 200, []);
     }

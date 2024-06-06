@@ -28,4 +28,9 @@ class Contrato extends Model
     {
         return $this->belongsTo(Filtro::class, 'filtro_id');
     }
+
+    public function alertas()
+    {
+        return $this->hasMany(Alerta::class, 'contrato_id');
+    }
 }
