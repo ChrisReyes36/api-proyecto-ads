@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mantenimientos', function (Blueprint $table) {
             $table->id();
-            $table->date('scheduled date');
+            $table->date('scheduled_date');
             $table->date('date_made')->nullable();
             $table->enum('status', ['pendiente', 'realizado'])->default('pendiente');
             $table->text('observations')->nullable();

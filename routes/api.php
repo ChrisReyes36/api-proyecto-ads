@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Auth\RolesController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\ContratoController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\FiltroController;
 use App\Http\Controllers\Api\InventarioPiezaController;
 use App\Http\Controllers\Api\MantenimientoController;
@@ -113,6 +114,14 @@ Route::prefix('v1')->group(function () {
             Route::post('/', [OrdenTrabajoController::class, 'store']);
             Route::put('/{id}', [OrdenTrabajoController::class, 'update']);
             Route::delete('/{id}', [OrdenTrabajoController::class, 'destroy']);
+        });
+
+        //Dashboard
+        Route::prefix('dashboard')->group(function () {
+
+            Route::get('contadores', [DashboardController::class, 'contadores']);
+            Route::get('grafico-contratos', [DashboardController::class, 'graficoContratos']);
+            Route::get('ultimos-mantenimientos', [DashboardController::class, 'ultimosMantenimientos']);
         });
     });
 });
