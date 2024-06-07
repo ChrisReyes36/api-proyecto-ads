@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Traits\JsonResponseTrait;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
 
@@ -52,12 +53,14 @@ class AuthController extends Controller
             return $this->jsonResponse([], 404, ['message' => 'Usuario no encontrado']);
         }
 
+        $clientPassport = DB::table('oauth_clients')->where('password_client', 1)->first();
+
         if (Hash::check($request->password, $user->password)) {
 
             $request->request->add([
                 'grant_type' => 'password',
-                'client_id' => env('CLIENT_ID'),
-                'client_secret' => env('CLIENT_SECRET'),
+                'client_id' => $clientPassport->id,
+                'client_secret' => $clientPassport->secret,
                 'username' => $request->email,
                 'password' => $request->password,
             ]);
